@@ -1,0 +1,1 @@
+$('.gde-tooltip').tooltip();

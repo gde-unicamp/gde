@@ -1,0 +1,21 @@
+$h1-color: #FFF;
+
+h1 {
+  color: $h1-color;
+}
+
+@mixin row-space($size) {
+  padding: $size;
+}
+
+.row-space-1 {
+  @include row-space(1em);
+}
+
+.row-space-2 {
+  @include row-space(2em);
+}
+
+.gde-tooltip {
+  cursor: pointer;
+}

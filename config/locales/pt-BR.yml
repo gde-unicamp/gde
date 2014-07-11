@@ -1,0 +1,10 @@
+pt-BR:
+  content:
+    home_msg_1: O melhor amigo do estudante
+  forms:
+    username: Registro do Aluno ou E-mail
+    password: Senha
+    password_tip: Utilize aqui sua senha do GDE. Ela não é necessariamente a mesma senha da DAC.
+    login: Entrar
+    dac_login: Entrar pelo site da DAC
+    forgot_password: Perdeu sua senha?
