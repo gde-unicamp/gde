@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.0'
 # Authentication
 gem 'devise', '~> 3.2'
 
+# Forms
+gem 'simple_form', '~> 3.0'
+
 group :development do
   gem 'spring', '~> 1.1.3'
   gem 'quiet_assets', '~> 1.0.3'
