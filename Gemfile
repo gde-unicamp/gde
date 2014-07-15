@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Rails
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -18,6 +19,9 @@ gem 'devise', '~> 3.2'
 
 # Forms
 gem 'simple_form', '3.1.0.rc2'
+
+# Bower assets
+gem 'rails-assets-fontawesome', '~> 4.1'
 
 group :development do
   gem 'spring', '~> 1.1.3'
