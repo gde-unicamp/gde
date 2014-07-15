@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0'
 gem 'devise', '~> 3.2'
 
 # Forms
-gem 'simple_form', '~> 3.0'
+gem 'simple_form', '3.1.0.rc2'
 
 group :development do
   gem 'spring', '~> 1.1.3'

@@ -1,0 +1,21 @@
+pt-BR:
+  simple_form:
+    "yes": 'Sim'
+    "no": 'Não'
+    required:
+      text: 'obrigatório'
+      mark: '*'
+    error_notification:
+      default_message: "Por favor verifique os problemas abaixo:"
+    labels:
+      user:
+        email: Registro do Aluno ou E-mail
+        password: Senha
+    placeholders:
+      user:
+        email: Registro do Aluno ou E-mail
+        password: "******"
+    hints:
+      user:
+        password: Utilize aqui sua senha do GDE. Ela não é necessariamente a mesma senha da DAC.
+
