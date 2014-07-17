@@ -2,15 +2,17 @@
 <html>
   <head>
     <title>GDE</title>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans|Roboto:100' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
+    <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

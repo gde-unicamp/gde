@@ -1,4 +1,14 @@
+$grid-columns: 16;
 $body-bg: #212121;
+$font-family-sans-serif: "PT Sans", sans-serif;
+
+$footer-top-bg: #212121;
+$footer-top-color: #FFF;
+$footer-bottom-bg: #131313;
+$footer-bottom-color: #FFF;
+
+$h1-color: #FFF;
+$h2-color: #363636;
 
 @import "bootstrap";
 @import "gde";

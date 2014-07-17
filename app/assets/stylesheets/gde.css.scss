@@ -1,7 +1,23 @@
-$h1-color: #FFF;
+.home-logo .img-responsive {
+  margin: 0 auto;
+}
 
 h1 {
   color: $h1-color;
+  font-size: 3em;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -2px;
+}
+
+h2 {
+  color: $h2-color;
+  font-size: 2.8em;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+h4 {
+  font-weight: bold;
 }
 
 @mixin row-space($size) {
@@ -16,6 +32,126 @@ h1 {
   @include row-space(2em);
 }
 
-.gde-tooltip {
-  cursor: pointer;
+.form-group {
+  margin: 0;
+}
+
+// Footer
+footer {
+  .footer-top {
+    background-color: $footer-top-bg;
+    color: $footer-top-color;
+    font-size: 0.9em;
+    padding-bottom: 20px;
+    padding-top: 50px;
+  }
+
+  .footer-bottom {
+    background-color: $footer-bottom-bg;
+    color: $footer-top-color;
+    font-size: 0.9em;
+    line-height: 60px;
+  }
+}
+
+$input-group-bg: #292929;
+$input-icon-color: #191919;
+$input-color: #C7C7C7;
+
+form#new_user {
+  .input-group {
+    background-color: $input-group-bg;
+    border: 1px solid rgba(0, 0, 0, 0);
+    margin-bottom: 6px;
+    padding: 10px
+  }
+
+  .input-group-addon {
+    background-color: $input-group-bg;
+    border: 0 none;
+    color: $input-icon-color;
+    font-size: 1.6em;
+  }
+
+  input[type="email"], input[type="password"] {
+    background-color: $input-group-bg !important;
+    border: 0 none !important;
+    color: $input-color !important;
+
+    &:focus {
+      @include box-shadow(none);
+    }
+  }
+
+  .help {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .gde-tooltip {
+    background-color: $input-icon-color;
+    border-radius: 18px;
+    color: $input-color;
+    cursor: pointer;
+    font-size: 0.6em;
+    line-height: 35px;
+    width: 35px;
+  }
+
+  $tooltip-bg: #FFF;
+  .tooltip-arrow {
+    border-right-color: $tooltip-bg;
+    border-width: 12px 27px 12px 0;
+    left: 5px;
+    margin-top: -13px;
+    top: 50%;
+  }
+
+  .tooltip-inner {
+    background-color: $tooltip-bg;
+    border-radius: 0;
+    color: $input-icon-color;
+    font-size: 1em;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+    margin-left: 26px;
+    padding: 16px 20px;
+    text-align: left;
+    white-space: normal;
+    width: 200px;
+  }
+
+  $btn-login-color: #FFF;
+  $btn-login-bg: #118BBC;
+  $btn-login-bg-hover: #14A7E1;
+  .btn-login {
+    background-color: $btn-login-bg;
+    border: 0 none;
+    color: $btn-login-color;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    padding: 16px 0;
+    border-radius: 0;
+
+    &:focus, &:hover {
+      background-color: $btn-login-bg-hover;
+      color: $btn-login-color;
+    }
+  }
+}
+
+#home_news {
+  background-color: #FFF;
+  padding: 30px 0;
+
+  p {
+    font-size: 0.9em;
+  }
+}
+
+a, a:hover {
+  clear: both;
+  color: #FFF;
+  margin: 0 auto;
+  text-decoration: underline;
 }

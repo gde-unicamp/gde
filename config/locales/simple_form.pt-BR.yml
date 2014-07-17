@@ -15,7 +15,4 @@ pt-BR:
       user:
         email: Registro do Aluno ou E-mail
         password: "******"
-    hints:
-      user:
-        password: Utilize aqui sua senha do GDE. Ela não é necessariamente a mesma senha da DAC.
 

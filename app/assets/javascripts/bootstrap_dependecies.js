@@ -1,1 +1,1 @@
-$('.gde-tooltip').tooltip();
+$('.gde-tooltip').tooltip('show');
