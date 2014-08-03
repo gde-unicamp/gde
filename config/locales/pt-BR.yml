@@ -1,18 +1,18 @@
 pt-BR:
   content:
-    home_msg_1: O melhor amigo do estudante
-    home_msg_2: Veja o que você pode fazer com o GDE
-    password_tooltip: Utilize aqui sua senha do GDE. Ela não é necessariamente a mesma senha da DAC.
-    login: Entrar
-    dac_login: Entrar pelo site da DAC
-    home_news_title_1: Planejar suas matérias
-    home_news_text_1: Utilize o planejador do GDE para montar sua grade para o próximo semestre.
-    home_news_title_2: Ver o cardápio do bandejão
-    home_news_text_2: Com o GDE você pode visualizar o cardápio que será oferecido durante a semana no RU.
-    home_news_title_3: Interagir com seus amigos
-    home_news_text_3: O GDE funciona como rede social e permite a interação entre os alunos da UNICAMP.
-    home_news_title_4: Acessar informações da DAC
-    home_news_text_4: Aqui você pode consultar informações oficiais da DAC.
-    forgot_password: Perdeu sua senha?
-    footer_message: O GDE não é um sistema oficial da Unicamp, e tem por objetivo único auxiliar alunos na vida acadêmica.
-    all_rights_reserved: Nenhum direito reservado
+    home_msg_1: "O melhor amigo do estudante"
+    home_msg_2: "Veja o que você pode fazer com o GDE"
+    password_tooltip: "Utilize aqui sua senha do GDE. Ela não é necessariamente a mesma senha da DAC."
+    login: "Entrar"
+    dac_login: "Entrar pelo site da DAC"
+    home_news_title_1: "Planejar suas matérias"
+    home_news_text_1: "Utilize o planejador do GDE para montar sua grade para o próximo semestre."
+    home_news_title_2: "Ver o cardápio do bandejão"
+    home_news_text_2: "Com o GDE você pode visualizar o cardápio que será oferecido durante a semana no RU."
+    home_news_title_3: "Interagir com seus amigos"
+    home_news_text_3: "O GDE funciona como rede social e permite a interação entre os alunos da UNICAMP."
+    home_news_title_4: "Acessar informações da DAC"
+    home_news_text_4: "Aqui você pode consultar informações oficiais da DAC."
+    forgot_password: "Perdeu sua senha?"
+    footer_message: "O GDE não é um sistema oficial da Unicamp, e tem por objetivo único auxiliar alunos na vida acadêmica."
+    all_rights_reserved: "Nenhum direito reservado"

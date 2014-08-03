@@ -3,16 +3,16 @@ pt-BR:
     "yes": 'Sim'
     "no": 'Não'
     required:
-      text: 'obrigatório'
-      mark: '*'
+      text: "obrigatório"
+      mark: "*"
     error_notification:
       default_message: "Por favor verifique os problemas abaixo:"
     labels:
       user:
-        email: Registro do Aluno ou E-mail
-        password: Senha
+        email: "Registro do Aluno ou E-mail"
+        password: "Senha"
     placeholders:
       user:
-        email: Registro do Aluno ou E-mail
+        email: "Registro do Aluno ou E-mail"
         password: "******"
 
