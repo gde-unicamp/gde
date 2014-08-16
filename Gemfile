@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.2'
 gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '>= 1.3'
 gem 'coffee-rails', '~> 4.0'
+gem "paperclip", "~> 4.1"
 
 # Authentication
 gem 'devise', '~> 3.2'
