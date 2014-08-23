@@ -9,12 +9,20 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <%= image_tag "home_logo.png", class: "center-block logo", width: '96', height: '96' %>
         </div>
-        <div class="col-md-10 bg-blue">
-          <div class="row-space-2"></div>
-          <div class="row-space-2"></div>
+        <div id="user-header" class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= image_tag 'http://placehold.it/72x72', class: 'pull-left' %>
+              <h4><%= current_user.label %></h4>
+              <span class="fa-stack fa-lg pull-right">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-power-off fa-stack-1x fa-inverse"></i>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
