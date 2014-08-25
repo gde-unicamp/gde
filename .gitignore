@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
+# swp files
+*.swp
+
 # Mac finder artifacts
 .DS_Store

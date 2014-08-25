@@ -1,4 +1,3 @@
-$grid-columns: 12;
 $body-bg: #212121;
 $font-family-sans-serif: "PT Sans", sans-serif;
 
@@ -13,3 +12,4 @@ $h2-color: #363636;
 @import "bootstrap";
 @import "gde";
 @import "fontawesome";
+@import "layout_user"
