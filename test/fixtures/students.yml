@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ra: 1
+  name: MyString
+  egress: false
+  undergraduate_program_id: 
+  track: MyString
+  language_choice: MyString
+  postgraduate_program_id: 
+
+two:
+  ra: 1
+  name: MyString
+  egress: false
+  undergraduate_program_id: 
+  track: MyString
+  language_choice: MyString
+  postgraduate_program_id: 

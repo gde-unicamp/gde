@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  title: MyString
+  credits: 1
+  overview: MyText
+  term: 1
+  year: 1
+  min_enrolled_students: 1
+  max_enrolled_students: 1
+  website: MyString
+  faculty_id: 
+  professor_id: 
+
+two:
+  code: MyString
+  title: MyString
+  credits: 1
+  overview: MyText
+  term: 1
+  year: 1
+  min_enrolled_students: 1
+  max_enrolled_students: 1
+  website: MyString
+  faculty_id: 
+  professor_id: 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_of_week: 1
+  start_time: 2014-09-18 20:16:31
+  end_time: 2014-09-18 20:16:31
+  classroom_id: 
+  course_id: 
+
+two:
+  day_of_week: 1
+  start_time: 2014-09-18 20:16:31
+  end_time: 2014-09-18 20:16:31
+  classroom_id: 
+  course_id: 
