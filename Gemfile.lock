@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/plataformatec/devise.git
+  revision: 8482e485d1396fdc43c030098f80c90f11763a3a
+  branch: lm-rails-4-2
+  specs:
+    devise (3.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -55,17 +68,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    devise (3.3.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
+    domain_name (0.5.21)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.2.1)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0.beta1)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -73,13 +84,25 @@ GEM
     json (1.8.1)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    mechanize (2.7.3)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (~> 2.0)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     method_source (0.8.2)
     mime-types (2.3)
     mini_portile (0.6.0)
     minitest (5.4.1)
     multi_json (1.10.1)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    ntlm-http (0.1.1)
     orm_adapter (0.5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -121,6 +144,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    responders (2.0.0)
+      railties (>= 4.2.0.alpha, < 5)
     sass (3.4.4)
     sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
@@ -150,8 +175,12 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
+    webrobots (0.1.1)
 
 PLATFORMS
   ruby
@@ -161,8 +190,9 @@ DEPENDENCIES
   awesome_print (~> 1.2)
   bootstrap-sass (~> 3.2)
   coffee-rails (~> 4.0)
-  devise (~> 3.2)
+  devise!
   jquery-rails (~> 3.1)
+  mechanize (~> 2.7)
   paperclip (~> 4.1)
   pry-rails (~> 0.3)
   quiet_assets (~> 1.0)

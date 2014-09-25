@@ -16,13 +16,16 @@ gem 'coffee-rails', '~> 4.0'
 gem "paperclip", "~> 4.1"
 
 # Authentication
-gem 'devise', '~> 3.2'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'lm-rails-4-2'
 
 # Forms
 gem 'simple_form', '3.1.0.rc2'
 
 # Bower assets
 gem 'rails-assets-fontawesome', '~> 4.1'
+
+# Scrap info
+gem 'mechanize', '~> 2.7', require: false
 
 group :development do
   gem 'awesome_print', '~> 1.2'
