@@ -37,7 +37,7 @@ class CourseMech < Mechanize
   end
 
   def title
-    page.at("//a[@name='#{@course}']/..").text.mb_chars.tidy_bytes.gsub(/\s{2,}/, '').strip.to_s
+    page.at("//a[@name='#{@course}']/..").text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
   end
 
   def credits
@@ -45,7 +45,7 @@ class CourseMech < Mechanize
   end
 
   def overview
-    page.at("//td[@align='LEFT'][@width='600']").text.mb_chars.tidy_bytes.gsub(/\s{2,}/, '').strip.to_s
+    page.at("//td[@align='LEFT'][@width='600']").text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
   end
 
   def year
@@ -55,4 +55,5 @@ class CourseMech < Mechanize
   def vacancies
     page.at("//b[contains(.,'vagas')]/..").text[/\d+/]
   end
+
 end
