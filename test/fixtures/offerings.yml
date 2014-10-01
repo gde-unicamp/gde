@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  term: 1
+  year: 1
+  professor_id: 
+  enrolled_students: 1
+  course_id: 
+
+two:
+  term: 1
+  year: 1
+  professor_id: 
+  enrolled_students: 1
+  course_id: 

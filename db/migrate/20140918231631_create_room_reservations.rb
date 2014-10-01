@@ -5,7 +5,7 @@ class CreateRoomReservations < ActiveRecord::Migration
       t.time :start_time
       t.time :end_time
       t.references :classroom, index: true
-      t.references :course, index: true
+      t.references :offering, index: true
 
       t.timestamps
     end

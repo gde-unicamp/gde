@@ -1,6 +1,21 @@
-class Course < ActiveRecord::Base
-  enum term: [ :first_semester, :second_semester, :summer_vacations ]
+# == Schema Information
+#
+# Table name: courses
+#
+#  code       :string
+#  created_at :datetime
+#  faculty_id :integer
+#  id         :integer          not null, primary key
+#  overview   :text
+#  title      :string
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_courses_on_faculty_id  (faculty_id)
+#
 
+class Course < ActiveRecord::Base
   belongs_to :faculty
   belongs_to :professor
 
