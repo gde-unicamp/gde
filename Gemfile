@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 # Rails
-gem 'rails', '~> 4.2.0.beta1'
+gem 'rails', '~> 4.2.0.beta2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Annotate our models with schema info
