@@ -5,6 +5,8 @@ source 'https://rails-assets.org'
 gem 'rails', '~> 4.2.0.beta1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Annotate our models with schema info
+gem 'annotate', '~> 2.6'
 
 # Assets
 gem 'autoprefixer-rails', '~> 0.7'
