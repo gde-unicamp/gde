@@ -27,6 +27,7 @@ class CourseMech < Mechanize
         course: course,
         credits: credits,
         professor: Professor.where(name: professors[index]).first_or_create,
+        min_enrolled_students: min_students_required[index] || 0,
         max_enrolled_students: vacancies[index],
       ).first_or_create
     end
@@ -65,6 +66,12 @@ class CourseMech < Mechanize
 
   def vacancies
     @vacancies ||= page.search("//b[contains(.,'vagas')]/..").map do |node|
+      node.text[/\d+/]
+    end
+  end
+
+  def min_students_required
+    @min_students_required ||= page.search("//b[contains(.,'mínimo')]/..").map do |node|
       node.text[/\d+/]
     end
   end
