@@ -4,7 +4,8 @@ class CreateOfferings < ActiveRecord::Migration
       t.integer :term
       t.integer :year
       t.integer :credits
-      t.integer :enrolled_students
+      t.integer :min_enrolled_students, default: 0
+      t.integer :max_enrolled_students
       t.string :website
       t.references :course, index: true
       t.references :professor, index: true

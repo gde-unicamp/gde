@@ -2,16 +2,17 @@
 #
 # Table name: offerings
 #
-#  course_id         :integer
-#  created_at        :datetime         not null
-#  credits           :integer
-#  enrolled_students :integer
-#  id                :integer          not null, primary key
-#  professor_id      :integer
-#  term              :integer
-#  updated_at        :datetime         not null
-#  website           :string
-#  year              :integer
+#  course_id             :integer
+#  created_at            :datetime         not null
+#  credits               :integer
+#  id                    :integer          not null, primary key
+#  max_enrolled_students :integer
+#  min_enrolled_students :integer          default("0")
+#  professor_id          :integer
+#  term                  :integer
+#  updated_at            :datetime         not null
+#  website               :string
+#  year                  :integer
 #
 # Indexes
 #
@@ -25,3 +26,9 @@ class Offering < ActiveRecord::Base
 
   enum term: [ :first_semester, :second_semester, :summer_vacations ]
 end
+
+# Observations:
+#
+# min_enrolled_students: Some course offerings have a minimum number of students required.
+# see: http://www.dac.unicamp.br/sistemas/horarios/grad/G2S0/EA722.htm
+#

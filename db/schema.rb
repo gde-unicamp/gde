@@ -75,12 +75,13 @@ ActiveRecord::Schema.define(version: 20141001231446) do
     t.integer  "term"
     t.integer  "year"
     t.integer  "credits"
-    t.integer  "enrolled_students"
+    t.integer  "min_enrolled_students", default: 0
+    t.integer  "max_enrolled_students"
     t.string   "website"
     t.integer  "course_id"
     t.integer  "professor_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "offerings", ["course_id"], name: "index_offerings_on_course_id"

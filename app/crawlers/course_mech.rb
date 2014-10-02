@@ -2,23 +2,34 @@ require 'mechanize'
 
 class CourseMech < Mechanize
 
-  def initialize(period, course_code)
+  attr_reader :term
+
+  def initialize(term, course_code)
     @course = course_code
-    @period = period
+    @term = term
     super()
+    get(dac_page)
   end
 
   def course
-    get(dac_page) unless page
-    Course.new(
+    Course.where(
       code: @course,
       title: title,
-      credits: credits,
       overview: overview,
-      term: @period,
-      year: year,
-      max_enrolled_students: vacancies
-    )
+    ).first_or_create
+  end
+
+  def offerings
+    (0...professors.size).map do |index|
+      Offering.where(
+        term: term,
+        year: year,
+        course: course,
+        credits: credits,
+        professor: Professor.where(name: professors[index]).first_or_create,
+        max_enrolled_students: vacancies[index],
+      ).first_or_create
+    end
   end
 
   def dac_page
@@ -26,7 +37,7 @@ class CourseMech < Mechanize
   end
 
   def dac_url_period_param
-    case @period
+    case term
     when :first_semester
       'G1S0'
     when :second_semester
@@ -53,7 +64,14 @@ class CourseMech < Mechanize
   end
 
   def vacancies
-    page.at("//b[contains(.,'vagas')]/..").text[/\d+/]
+    @vacancies ||= page.search("//b[contains(.,'vagas')]/..").map do |node|
+      node.text[/\d+/]
+    end
   end
 
+  def professors
+    @professors ||= page.search("//b[.='Docente(s):']/../text()[2]").map do |node|
+      node.text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s[/(.+)\s+\(Responsável\)/, 1]
+    end
+  end
 end
