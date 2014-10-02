@@ -1,5 +1,15 @@
 .home-logo .img-responsive {
   margin: 0 auto;
+
+  @media(max-width: $screen-xs-max) {
+    height: 80px;
+  }
+}
+
+.home-message h1 {
+  @media(max-width: $screen-xs-max) {
+    font-size: 2.5em;
+  }
 }
 
 h1 {
