@@ -22,6 +22,7 @@ class CourseMech < Mechanize
   def offerings
     (0...professors.size).map do |index|
       Offering.where(
+        code: offering_codes[index],
         term: term,
         year: year,
         course: course,
@@ -62,6 +63,12 @@ class CourseMech < Mechanize
 
   def year
     page.at("//font[@color='#FFFFFF']/font[@size='-1']").text[/\d+/]
+  end
+
+  def offering_codes
+    (page.search("//font[@color='#990000']/..").to_a.unshift(page.at("//b[.='Turma:']/.."))).map do |node|
+      node.text[/^Turma:(.+)$/, 1].mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
+    end
   end
 
   def vacancies

@@ -1,6 +1,7 @@
 class CreateOfferings < ActiveRecord::Migration
   def change
     create_table :offerings do |t|
+      t.string :code
       t.integer :term
       t.integer :year
       t.integer :credits

@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "language_choices", ["undergraduate_program_id"], name: "index_language_choices_on_undergraduate_program_id"
 
   create_table "offerings", force: true do |t|
+    t.string   "code"
     t.integer  "term"
     t.integer  "year"
     t.integer  "credits"

@@ -2,6 +2,7 @@
 #
 # Table name: offerings
 #
+#  code                  :string
 #  course_id             :integer
 #  created_at            :datetime         not null
 #  credits               :integer
