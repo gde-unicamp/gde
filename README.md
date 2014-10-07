@@ -1,4 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/gde-unicamp/gde.png?label=ready&title=Ready)](https://waffle.io/gde-unicamp/gde) [![Code Climate](https://codeclimate.com/github/gde-unicamp/gde/badges/gpa.svg)](https://codeclimate.com/github/gde-unicamp/gde)
+[![Stories in Ready](https://badge.waffle.io/gde-unicamp/gde.png?label=ready&title=Ready)](https://waffle.io/gde-unicamp/gde)
+[![Build Status](https://travis-ci.org/gde-unicamp/gde.svg?branch=develop)](https://travis-ci.org/gde-unicamp/gde)
+[![Code Climate](https://codeclimate.com/github/gde-unicamp/gde/badges/gpa.svg)](https://codeclimate.com/github/gde-unicamp/gde)
 [![security](https://hakiri.io/github/gde-unicamp/gde/develop.svg)](https://hakiri.io/github/gde-unicamp/gde/develop)
 # GDE
 
