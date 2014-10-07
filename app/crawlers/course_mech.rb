@@ -54,7 +54,7 @@ class CourseMech < Mechanize
   end
 
   def credits
-    page.at("//b[.='Créditos:']/../text()").text[/\d+/]
+    page.at("//b[.='Créditos:']/../text()").text[/\d+/].to_i
   end
 
   def overview
@@ -62,7 +62,7 @@ class CourseMech < Mechanize
   end
 
   def year
-    page.at("//font[@color='#FFFFFF']/font[@size='-1']").text[/\d+/]
+    page.at("//font[@color='#FFFFFF']/font[@size='-1']").text[/\d+/].to_i
   end
 
   def offering_codes
@@ -73,13 +73,13 @@ class CourseMech < Mechanize
 
   def vacancies
     @vacancies ||= page.search("//b[contains(.,'vagas')]/..").map do |node|
-      node.text[/\d+/]
+      node.text[/\d+/].to_i
     end
   end
 
   def min_students_required
     @min_students_required ||= page.search("//b[contains(.,'mínimo')]/..").map do |node|
-      node.text[/\d+/]
+      node.text[/\d+/].to_i
     end
   end
 
