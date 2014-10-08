@@ -2,4 +2,6 @@ language: ruby
 rvm:
   - 2.1.3
 cache: bundler
-bundler_args: --without production development
+bundler_args: "--without production development"
+env:
+  secure: PoiTHK5nzfS3ZB1reKR5nkOe/adgd+9iO4vz3sbDiOQQmS3NLptfa4y+4A3FOJTxvrckaDcmchsLLkZjn0ORSuEcXMpLHDT4GlPYUts6aCddz2Lf/ucjP/BvOGaBxmVaQZOP+w8cu54v4ixbMwPiTu1DSbLMe1g/uBEctEFx8KM=

@@ -35,3 +35,8 @@ group :development do
   gem 'quiet_assets', '~> 1.0'
   gem 'spring', '~> 1.1'
 end
+
+group :test do
+  gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', require: false
+end
