@@ -53,5 +53,34 @@ describe CourseMech do
       subject.professor_names.must_equal professor_names
     end
 
+    it '#course' do
+      subject.course.must_be_kind_of Course
+      subject.course.code.wont_be_nil
+      subject.course.title.wont_be_nil
+      subject.course.overview.wont_be_nil
+    end
+
+    it '#professors' do
+      subject.professors.must_be_kind_of Enumerable
+      subject.professors.each do |professor|
+        professor.must_be_kind_of Professor
+        professor.name.wont_be_nil
+      end
+    end
+
+    it '#offerings' do
+      subject.offerings.must_be_kind_of Enumerable
+      subject.offerings.each do |offering|
+        offering.must_be_kind_of Offering
+        offering.code.wont_be_nil
+        offering.term.wont_be_nil
+        offering.year.wont_be_nil
+        offering.course.wont_be_nil
+        offering.credits.wont_be_nil
+        offering.professor.wont_be_nil
+        offering.min_enrolled_students.wont_be_nil
+        offering.max_enrolled_students.wont_be_nil
+      end
+    end
   end
 end
