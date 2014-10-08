@@ -37,6 +37,9 @@ Rails.application.configure do
   # Run the tests in a random order (other option: :sorted)
   config.active_support.test_order = :random
 
+  # Don't supress errors in any ActiveRecord callback
+  config.active_record.raise_in_transactional_callbacks = true
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
