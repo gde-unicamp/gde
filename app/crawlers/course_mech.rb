@@ -1,11 +1,9 @@
-require 'mechanize'
+class CourseMech < GdeMech
 
-class CourseMech < Mechanize
-
-  attr_reader :term
+  attr_reader :term, :course_code
 
   def initialize(term, course_code)
-    @course = course_code
+    @course_code = course_code
     @term = term
     super()
     get(dac_page)
@@ -13,7 +11,7 @@ class CourseMech < Mechanize
 
   def course
     Course.where(
-      code: @course,
+      code: course_code,
       title: title,
       overview: overview,
     ).first_or_create
@@ -27,15 +25,21 @@ class CourseMech < Mechanize
         year: year,
         course: course,
         credits: credits,
-        professor: Professor.where(name: professors[index]).first_or_create,
+        professor: professors[index],
         min_enrolled_students: min_students_required[index] || 0,
         max_enrolled_students: vacancies[index],
       ).first_or_create
     end
   end
 
+  def professors
+    @professors ||= professor_names.map do |name|
+      Professor.where(name: name).first_or_create
+    end
+  end
+
   def dac_page
-    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{@course}.htm"
+    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course_code}.htm"
   end
 
   def dac_url_period_param
@@ -50,24 +54,24 @@ class CourseMech < Mechanize
   end
 
   def title
-    page.at("//a[@name='#{@course}']/..").text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
+    @title ||= extract_str("//a[@name='#{course_code}']/..")
   end
 
   def credits
-    page.at("//b[.='Créditos:']/../text()").text[/\d+/].to_i
+    @credits ||= extract_int("//b[.='Créditos:']/../text()")
   end
 
   def overview
-    page.at("//td[@align='LEFT'][@width='600']").text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
+    @overview ||= extract_str("//td[@align='LEFT'][@width='600']")
   end
 
   def year
-    page.at("//font[@color='#FFFFFF']/font[@size='-1']").text[/\d+/].to_i
+    @year ||= extract_int("//font[@color='#FFFFFF']/font[@size='-1']")
   end
 
   def offering_codes
-    (page.search("//font[@color='#990000']/..").to_a.unshift(page.at("//b[.='Turma:']/.."))).map do |node|
-      node.text[/^Turma:(.+)$/, 1].mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
+    @offering_codes ||= (page.search("//font[@color='#990000']/..").to_a.unshift(page.at("//b[.='Turma:']/.."))).map do |node|
+      clean_str(node.text[/^Turma:(.+)$/, 1])
     end
   end
 
@@ -83,9 +87,9 @@ class CourseMech < Mechanize
     end
   end
 
-  def professors
-    @professors ||= page.search("//b[.='Docente(s):']/../text()[2]").map do |node|
-      node.text.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s[/(.+)\s+\(Responsável\)/, 1]
+  def professor_names
+    @professor_names ||= page.search("//b[.='Docente(s):']/../text()[2]").map do |node|
+      clean_str(node.text)[/(.+)\s+\(Responsável\)/, 1]
     end
   end
 end

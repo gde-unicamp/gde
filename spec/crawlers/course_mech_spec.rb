@@ -15,7 +15,7 @@ describe CourseMech do
     let(:dac_url_period_param) { 'G2S0' }
     let(:vacancies) { [25, 25, 30, 25, 25] }
     let(:offering_codes) { ['A', 'B', 'C', 'E', 'F'] }
-    let(:professors) { ['Diego De Freitas Aranha', 'Diego De Freitas Aranha', 'Célio Cardoso Guimarães', 'Edson Borin', 'Edson Borin'] }
+    let(:professor_names) { ['Diego De Freitas Aranha', 'Diego De Freitas Aranha', 'Célio Cardoso Guimarães', 'Edson Borin', 'Edson Borin'] }
   
     it '#dac_url_period_param' do
       subject.dac_url_period_param.must_equal dac_url_period_param
@@ -49,8 +49,8 @@ describe CourseMech do
       subject.vacancies.must_equal vacancies
     end
 
-    it '#professors' do
-      subject.professors.must_equal professors
+    it '#professor_names' do
+      subject.professor_names.must_equal professor_names
     end
 
   end
