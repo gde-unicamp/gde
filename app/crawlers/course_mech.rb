@@ -22,11 +22,13 @@ class CourseMech < GdeMech
   #
   # @return [Course] a Course with the info from DAC's website.
   def course
-    Course.where(
-      code: course_code,
-      title: title,
-      overview: overview,
-    ).first_or_create
+    unless @course
+      @course = Course.find_by(code: course_code) || Course.create!(code: course_code)
+      @course.title = title
+      @course.overview = overview
+      @course.save!
+    end
+    @course
   end
 
   # Find or create all the Offering models for the page that the Mech is parsing
@@ -52,7 +54,7 @@ class CourseMech < GdeMech
   # @return [Array<Professor>] a Professor list.
   def professors
     @professors ||= professor_names.map do |name|
-      Professor.where(name: name).first_or_create
+      Professor.find_by(name: name) || Professor.create!(name: name)
     end
   end
 
