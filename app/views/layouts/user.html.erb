@@ -7,30 +7,47 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2">
-          <%= image_tag "home_logo.png", class: "center-block logo", width: '96', height: '96' %>
+    <section class="container-fluid">
+      <!-- Header -->
+      <header class="header row">
+        <div class="header-left col-lg-2 col-sm-3">
+          <%= image_tag "home_logo.png", class: "header-logo",
+            width: '72', height: '72' %>
         </div>
-        <div id="user-header" class="col-sm-10">
-          <div class="row">
-            <div class="col-sm-4">
-              <%= image_tag 'http://placehold.it/72x72', class: 'pull-left' %>
-              <h4><%= current_user.label %></h4>
-              <span class="fa-stack fa-lg pull-right">
-                <i class="fa fa-square fa-stack-2x"></i>
-                <i class="fa fa-power-off fa-stack-1x fa-inverse"></i>
-              </span>
+
+        <div class="header-center col-lg-8 col-sm-9 no-padding">
+          <div class="user-nav">
+            <%= image_tag 'http://placehold.it/52x52', class: 'pull-left' %>
+            <div class="user-info">
+              <span class="user-name"><%= "Pota Beranizo" %></span>
+              <span class="user-notifications"><%= "Você tem x notificações" %></span>
             </div>
+            <i class="user-nav-icon fa fa-caret-down"></i>
           </div>
         </div>
-      </div>
-    </div>
-    <section class="container-fluid">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+
+        <div class="header-right col-lg-2 visible-lg">
+        </div>
+      </header>
+
+      <section class="row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="col-lg-2 col-sm-3 no-padding" role="navigation">
+          <%= render 'layouts/sidebar' %>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" class="col-lg-8 col-sm-9">
+          <h2>middle</h2>
+        </main>
+
+        <!-- Right sidebar -->
+        <aside id="right-sidebar" class="col-lg-2 visible-lg">
+          <h1>right</h1>
+        </aside>
+      </section>
     </section>
+
     <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'application' %>
   </body>

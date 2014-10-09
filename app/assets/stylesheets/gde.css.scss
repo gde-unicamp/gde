@@ -106,11 +106,17 @@ form#new_user {
   input[type="email"], input[type="password"] {
     background-color: $input-group-bg !important;
     border: 0 none !important;
+    border-radius: 0;
     color: $input-color !important;
 
     &:focus {
       @include box-shadow(none);
     }
+  }
+
+  input:-webkit-autofill, input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px $input-group-bg inset;
+    -webkit-text-fill-color: $input-color !important; 
   }
 
   .help {
