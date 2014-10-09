@@ -83,4 +83,16 @@ describe CourseMech do
       end
     end
   end
+
+  describe 'CourseMech scrapping EA722 at Second Semester' do
+
+    subject { CourseMech.new(:second_semester, 'EA722') }
+
+    # Expected values
+    let(:min_students_required) { [7, 7] }
+
+    it '#min_students_required' do
+      subject.min_students_required.must_equal min_students_required
+    end
+  end
 end
