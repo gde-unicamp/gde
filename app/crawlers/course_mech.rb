@@ -6,6 +6,11 @@ class CourseMech < GdeMech
 
   attr_reader :term, :course_code
 
+  # Initialize variables and fetchs the course page
+  #
+  # @param term [Symbol] the Course offering term, `:first_semester` or `:second_semester` or `:summer_vacations`
+  # @param course_code [String] the Course identifier code, eg: MC302
+  # @return [CourseMech] the initialized CourseMech
   def initialize(term, course_code)
     @course_code = course_code
     @term = term
