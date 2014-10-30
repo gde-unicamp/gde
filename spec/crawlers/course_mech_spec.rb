@@ -101,4 +101,28 @@ describe CourseMech do
       subject.min_students_required.must_equal min_students_required
     end
   end
+
+  describe 'CourseMech scrapping F 012 at First Semester' do
+
+    let(:f_012) { Course.find_by(code: 'F 012') || Course.create!(code: 'F 012') }
+
+    subject { CourseMech.new(:first_semester, f_012) }
+
+    # Expected values
+    let(:professor_names) { [['Adriano Roberto De Lima', 'Monica Alonso Cotta']] }
+
+    it '#professor_names' do
+      subject.professor_names.must_equal professor_names
+    end
+
+    it '#professors' do
+      subject.professors.must_be_kind_of Enumerable
+      subject.professors.each do |offering_professors|
+        offering_professors.each do |professor|
+          professor.must_be_kind_of Professor
+          professor.name.wont_be_nil
+        end
+      end
+    end
+  end
 end

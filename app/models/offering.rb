@@ -31,3 +31,6 @@ end
 # min_enrolled_students: Some course offerings have a minimum number of students required.
 # see: http://www.dac.unicamp.br/sistemas/horarios/grad/G2S0/EA722.htm
 #
+# HABTM professors: Some course offerings have more than one professor
+# see: http://www.dac.unicamp.br/sistemas/horarios/grad/G1S0/F_012.htm
+#
