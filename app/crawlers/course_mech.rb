@@ -138,6 +138,7 @@ class CourseMech < GdeMech
   def professor_names
     @professor_names ||= page.search("//b[.='Docente(s):']/../text()").map do |node|
       s = clean_str(node.text)
+      s.sub!('Não informado', '')
       s.empty? ? nil : s
     end.compact.reduce([]) do |professors, professor|
       if professor.sub!(' (Responsável)', '')
