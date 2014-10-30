@@ -5,7 +5,7 @@
 #  created_at :datetime
 #  degree     :integer
 #  id         :integer          not null, primary key
-#  title      :string
+#  title      :string(255)
 #  updated_at :datetime
 #
 
