@@ -2,7 +2,7 @@
 #
 # Table name: language_choices
 #
-#  code                     :string(255)
+#  code                     :string
 #  created_at               :datetime
 #  id                       :integer          not null, primary key
 #  undergraduate_program_id :integer

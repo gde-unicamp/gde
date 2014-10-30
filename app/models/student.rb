@@ -5,11 +5,11 @@
 #  created_at               :datetime
 #  egress                   :boolean
 #  id                       :integer          not null, primary key
-#  language_choice          :string(255)
-#  name                     :string(255)
+#  language_choice          :string
+#  name                     :string
 #  postgraduate_program_id  :integer
 #  ra                       :integer
-#  track                    :string(255)
+#  track                    :string
 #  undergraduate_program_id :integer
 #  updated_at               :datetime
 #

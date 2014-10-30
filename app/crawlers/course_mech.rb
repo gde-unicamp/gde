@@ -24,16 +24,17 @@ class CourseMech < GdeMech
   # @return [Array<Offering>] an Offering list.
   def offerings
     (0...professors.size).map do |index|
-      Offering.where(
+      o = Offering.where(
         code: offering_codes[index],
         term: term,
         year: year,
         course: course,
         credits: credits,
-        professor: professors[index],
         min_enrolled_students: min_students_required[index] || 0,
         max_enrolled_students: vacancies[index],
       ).first_or_create
+      o.professors = professors[index]
+      o
     end
   end
 
@@ -41,16 +42,21 @@ class CourseMech < GdeMech
   #
   # @return [Array<Professor>] a Professor list.
   def professors
-    @professors ||= professor_names.map do |name|
-      Professor.find_by(name: name) || Professor.create!(name: name)
+    @professors ||= professor_names.map do |names|
+      names.map do |name|
+        p = Professor.find_by(name: name) || Professor.create!(name: name)
+        p.update!(faculty: @course.faculty)
+        p
+      end
     end
   end
 
   # Determines, based on the course code and the term, the page that the mech should visit to get info.
+  # Edgecase: F_128 and similars (The real course code is F 128, but in the URL it's F_128)
   #
   # @return [String] the course offering url in DAC's website.
   def dac_page
-    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course.code}.htm"
+    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course.code.tr(' ', '_')}.htm"
   end
 
   # Converts a term symbol from Offring term enum to DAC's code for the term.
@@ -128,10 +134,18 @@ class CourseMech < GdeMech
 
   # Discover the professor name for each offering in the html
   #
-  # @return [Array<String>] A list with professor names.
+  # @return [Array<Array<String>] A list with professor names.
   def professor_names
-    @professor_names ||= page.search("//b[.='Docente(s):']/../text()[2]").map do |node|
-      clean_str(node.text)[/(.+)\s+\(Responsável\)/, 1]
+    @professor_names ||= page.search("//b[.='Docente(s):']/../text()").map do |node|
+      s = clean_str(node.text)
+      s.empty? ? nil : s
+    end.compact.reduce([]) do |professors, professor|
+      if professor.sub!(' (Responsável)', '')
+        professors << [professor]
+      else
+        professors.last << professor
+      end
+      professors
     end
   end
 end

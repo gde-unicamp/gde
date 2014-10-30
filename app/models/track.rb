@@ -2,10 +2,10 @@
 #
 # Table name: tracks
 #
-#  code                     :string(255)
+#  code                     :string
 #  created_at               :datetime
 #  id                       :integer          not null, primary key
-#  title                    :string(255)
+#  title                    :string
 #  undergraduate_program_id :integer
 #  updated_at               :datetime
 #

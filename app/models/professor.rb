@@ -3,13 +3,13 @@
 # Table name: professors
 #
 #  created_at :datetime
-#  email      :string(255)
+#  email      :string
 #  faculty_id :integer
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  office     :string(255)
+#  name       :string
+#  office     :string
 #  updated_at :datetime
-#  website    :string(255)
+#  website    :string
 #
 # Indexes
 #
@@ -17,8 +17,6 @@
 #
 
 class Professor < ActiveRecord::Base
-
-  has_many :offerings
-
   belongs_to :faculty
+  has_and_belongs_to_many :offerings
 end

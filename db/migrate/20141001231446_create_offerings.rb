@@ -9,7 +9,6 @@ class CreateOfferings < ActiveRecord::Migration
       t.integer :max_enrolled_students
       t.string :website
       t.references :course, index: true
-      t.references :professor, index: true
 
       t.timestamps null: false
     end

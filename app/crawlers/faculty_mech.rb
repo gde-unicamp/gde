@@ -37,9 +37,12 @@ class FacultyMech < GdeMech
     end
   end
 
+  #
+  # Edgecase: F_128 and similars (The real course code is F 128, but in the URL it's F_128)
+  #
   def course_codes
     @course_codes ||= page.search("//a[@href!='javascript:history.go (-1)()']").map do |node| 
-      node.get_attribute('href')[/\w+/]
+      node.get_attribute('href')[/\w+/].tr('_', ' ')
     end
   end
 end

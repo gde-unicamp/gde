@@ -9,7 +9,6 @@
 #  id                    :integer          not null, primary key
 #  max_enrolled_students :integer
 #  min_enrolled_students :integer          default("0")
-#  professor_id          :integer
 #  term                  :integer
 #  updated_at            :datetime         not null
 #  website               :string
@@ -17,13 +16,12 @@
 #
 # Indexes
 #
-#  index_offerings_on_course_id     (course_id)
-#  index_offerings_on_professor_id  (professor_id)
+#  index_offerings_on_course_id  (course_id)
 #
 
 class Offering < ActiveRecord::Base
-  belongs_to :professor
   belongs_to :course
+  has_and_belongs_to_many :professors
 
   enum term: [ :first_semester, :second_semester, :summer_vacations ]
 end

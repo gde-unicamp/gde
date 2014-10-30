@@ -5,7 +5,7 @@
 #  created_at :datetime
 #  faculty_id :integer
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  name       :string
 #  updated_at :datetime
 #
 # Indexes
