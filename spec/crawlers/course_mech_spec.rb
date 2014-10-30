@@ -4,7 +4,9 @@ describe CourseMech do
 
   describe 'CourseMech scrapping MC404 at Second Semester' do
 
-    subject { CourseMech.new(:second_semester, 'MC404') }
+    let(:mc404) { Course.find_by(code: 'MC404') || Course.create!(code: 'MC404') }
+
+    subject { CourseMech.new(:second_semester, mc404) }
 
     # Expected values
     let(:year) { 2014 }
@@ -15,7 +17,7 @@ describe CourseMech do
     let(:dac_url_period_param) { 'G2S0' }
     let(:vacancies) { [25, 25, 30, 25, 25] }
     let(:offering_codes) { ['A', 'B', 'C', 'E', 'F'] }
-    let(:professor_names) { ['Diego De Freitas Aranha', 'Diego De Freitas Aranha', 'Célio Cardoso Guimarães', 'Edson Borin', 'Edson Borin'] }
+    let(:professor_names) { [['Diego De Freitas Aranha'], ['Diego De Freitas Aranha'], ['Célio Cardoso Guimarães'], ['Edson Borin'], ['Edson Borin']] }
   
     it '#dac_url_period_param' do
       subject.dac_url_period_param.must_equal dac_url_period_param
@@ -62,9 +64,11 @@ describe CourseMech do
 
     it '#professors' do
       subject.professors.must_be_kind_of Enumerable
-      subject.professors.each do |professor|
-        professor.must_be_kind_of Professor
-        professor.name.wont_be_nil
+      subject.professors.each do |offering_professors|
+        offering_professors.each do |professor|
+          professor.must_be_kind_of Professor
+          professor.name.wont_be_nil
+        end
       end
     end
 
@@ -77,7 +81,7 @@ describe CourseMech do
         offering.year.wont_be_nil
         offering.course.wont_be_nil
         offering.credits.wont_be_nil
-        offering.professor.wont_be_nil
+        offering.professors.wont_be_nil
         offering.min_enrolled_students.wont_be_nil
         offering.max_enrolled_students.wont_be_nil
       end
@@ -86,7 +90,9 @@ describe CourseMech do
 
   describe 'CourseMech scrapping EA722 at Second Semester' do
 
-    subject { CourseMech.new(:second_semester, 'EA722') }
+    let(:ea722) { Course.find_by(code: 'EA722') || Course.create!(code: 'EA722') }
+
+    subject { CourseMech.new(:second_semester, ea722) }
 
     # Expected values
     let(:min_students_required) { [7, 7] }
