@@ -3,13 +3,13 @@
 # Table name: professors
 #
 #  created_at :datetime
-#  email      :string
+#  email      :string(255)
 #  faculty_id :integer
 #  id         :integer          not null, primary key
-#  name       :string
-#  office     :string
+#  name       :string(255)
+#  office     :string(255)
 #  updated_at :datetime
-#  website    :string
+#  website    :string(255)
 #
 # Indexes
 #

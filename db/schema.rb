@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20141001231446) do
 
   create_table "classrooms", force: true do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.integer  "faculty_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,15 +23,23 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "classrooms", ["faculty_id"], name: "index_classrooms_on_faculty_id"
 
   create_table "courses", force: true do |t|
-    t.string   "code"
-    t.string   "title"
+    t.string   "code",                  limit: 255
+    t.string   "title",                 limit: 255
+    t.integer  "credits"
     t.text     "overview"
+    t.integer  "term"
+    t.integer  "year"
+    t.integer  "min_enrolled_students"
+    t.integer  "max_enrolled_students"
+    t.string   "website",               limit: 255
     t.integer  "faculty_id"
+    t.integer  "professor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "courses", ["faculty_id"], name: "index_courses_on_faculty_id"
+  add_index "courses", ["professor_id"], name: "index_courses_on_professor_id"
 
   create_table "enrollments", force: true do |t|
     t.integer  "status"
@@ -45,8 +53,8 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "enrollments", ["student_id"], name: "index_enrollments_on_student_id"
 
   create_table "faculties", force: true do |t|
-    t.string   "acronym"
-    t.string   "name"
+    t.string   "acronym",    limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,7 +71,7 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
 
   create_table "language_choices", force: true do |t|
-    t.string   "code"
+    t.string   "code",                     limit: 255
     t.integer  "undergraduate_program_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -89,18 +97,18 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "offerings", ["professor_id"], name: "index_offerings_on_professor_id"
 
   create_table "postgraduate_programs", force: true do |t|
-    t.string   "title"
+    t.string   "title",      limit: 255
     t.integer  "degree"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "professors", force: true do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.integer  "faculty_id"
-    t.string   "email"
-    t.string   "office"
-    t.string   "website"
+    t.string   "email",      limit: 255
+    t.string   "office",     limit: 255
+    t.string   "website",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -109,7 +117,7 @@ ActiveRecord::Schema.define(version: 20141001231446) do
 
   create_table "program_courses_groups", force: true do |t|
     t.integer  "courseable_group_id"
-    t.string   "courseable_group_type"
+    t.string   "courseable_group_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,21 +127,21 @@ ActiveRecord::Schema.define(version: 20141001231446) do
     t.time     "start_time"
     t.time     "end_time"
     t.integer  "classroom_id"
-    t.integer  "offering_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "room_reservations", ["classroom_id"], name: "index_room_reservations_on_classroom_id"
-  add_index "room_reservations", ["offering_id"], name: "index_room_reservations_on_offering_id"
+  add_index "room_reservations", ["course_id"], name: "index_room_reservations_on_course_id"
 
   create_table "students", force: true do |t|
     t.integer  "ra"
-    t.string   "name"
+    t.string   "name",                     limit: 255
     t.boolean  "egress"
     t.integer  "undergraduate_program_id"
-    t.string   "track"
-    t.string   "language_choice"
+    t.string   "track",                    limit: 255
+    t.string   "language_choice",          limit: 255
     t.integer  "postgraduate_program_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -143,8 +151,8 @@ ActiveRecord::Schema.define(version: 20141001231446) do
   add_index "students", ["undergraduate_program_id"], name: "index_students_on_undergraduate_program_id"
 
   create_table "tracks", force: true do |t|
-    t.string   "code"
-    t.string   "title"
+    t.string   "code",                     limit: 255
+    t.string   "title",                    limit: 255
     t.integer  "undergraduate_program_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -154,30 +162,30 @@ ActiveRecord::Schema.define(version: 20141001231446) do
 
   create_table "undergraduate_programs", force: true do |t|
     t.integer  "number"
-    t.string   "title"
+    t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "name"
-    t.string   "nickname"
+    t.string   "name",                   limit: 255
+    t.string   "nickname",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

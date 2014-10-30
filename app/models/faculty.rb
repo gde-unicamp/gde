@@ -2,10 +2,10 @@
 #
 # Table name: faculties
 #
-#  acronym    :string
+#  acronym    :string(255)
 #  created_at :datetime
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string(255)
 #  updated_at :datetime
 #
 

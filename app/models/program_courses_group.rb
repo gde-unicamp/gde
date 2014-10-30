@@ -3,7 +3,7 @@
 # Table name: program_courses_groups
 #
 #  courseable_group_id   :integer
-#  courseable_group_type :string
+#  courseable_group_type :string(255)
 #  created_at            :datetime
 #  id                    :integer          not null, primary key
 #  updated_at            :datetime
