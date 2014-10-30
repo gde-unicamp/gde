@@ -4,31 +4,19 @@
 #
 class CourseMech < GdeMech
 
-  attr_reader :term, :course_code
+  attr_reader :term, :course
 
   # Initialize variables and fetchs the course page
   #
   # @param term [Symbol] the Course offering term, `:first_semester` or `:second_semester` or `:summer_vacations`
   # @param course_code [String] the Course identifier code, eg: MC302
   # @return [CourseMech] the initialized CourseMech
-  def initialize(term, course_code)
-    @course_code = course_code
+  def initialize(term, course)
+    @course = course
     @term = term
     super()
     get(dac_page)
-  end
-
-  # Find or create a Course model for the page that the Mech is parsing
-  #
-  # @return [Course] a Course with the info from DAC's website.
-  def course
-    unless @course
-      @course = Course.find_by(code: course_code) || Course.create!(code: course_code)
-      @course.title = title
-      @course.overview = overview
-      @course.save!
-    end
-    @course
+    course.update!(title: title, overview: overview)
   end
 
   # Find or create all the Offering models for the page that the Mech is parsing
@@ -62,7 +50,7 @@ class CourseMech < GdeMech
   #
   # @return [String] the course offering url in DAC's website.
   def dac_page
-    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course_code}.htm"
+    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course.code}.htm"
   end
 
   # Converts a term symbol from Offring term enum to DAC's code for the term.
@@ -83,7 +71,7 @@ class CourseMech < GdeMech
   #
   # @return [String] The course name.
   def title
-    @title ||= extract_str("//a[@name='#{course_code}']/..")
+    @title ||= extract_str("//a[@name='#{course.code}']/..")
   end
 
   # Discover the course credits value in the html

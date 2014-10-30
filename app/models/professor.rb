@@ -17,5 +17,8 @@
 #
 
 class Professor < ActiveRecord::Base
+
+  has_many :offerings
+
   belongs_to :faculty
 end

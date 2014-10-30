@@ -1,16 +1,20 @@
+#
+# A Mech to visit DAC's website and extract
+# Faculty and a list of Course codes
+#
 class FacultyMech < GdeMech
 
-  attr_reader :term, :faculty_code
+  attr_reader :term, :faculty
 
-  def initialize(term, faculty_code)
-    @faculty_code = faculty_code
+  def initialize(term, faculty)
+    @faculty = faculty
     @term = term
     super()
     get(dac_page)
   end
 
   def dac_page
-    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{faculty_code}.htm"
+    "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{faculty.acronym}.htm"
   end
 
   def dac_url_period_param
@@ -21,6 +25,15 @@ class FacultyMech < GdeMech
       'G2S0'
     when :summer_vacations
       'G5A0'
+    end
+  end
+
+  def courses
+    @courses ||= course_codes.reduce([]) do |courses, course_code|
+      course = Course.find_by(code: course_code) || Course.create!(code: course_code)
+      course.update!(faculty: faculty)
+      courses << course
+      courses
     end
   end
 

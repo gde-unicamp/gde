@@ -3,10 +3,13 @@ class ScrapCoursesJob < ActiveJob::Base
 
   def perform(*args)
     term = :first_semester
-    faculty_mech = FacultyMech.new(term, 'IC')
-    faculty_mech.course_codes.each do |course_code|
-      course_mech = CourseMech.new(term, course_code)
-      course_mech.offerings
+    term_mech = TermMech.new(term)
+    term_mech.faculties.each do |faculty|
+      faculty_mech = FacultyMech.new(term, faculty)
+      faculty_mech.course_codes.each do |course_code|
+        course_mech = CourseMech.new(term, course_code, faculty)
+        course_mech.offerings
+      end
     end
   end
 end

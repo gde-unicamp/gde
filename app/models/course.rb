@@ -22,6 +22,8 @@ class Course < ActiveRecord::Base
   has_many :room_reservations
   has_many :classrooms, through: :room_reservation
 
+  has_many :offerings
+
   has_many :enrollments
   has_many :students, through: :enrollments
 end
