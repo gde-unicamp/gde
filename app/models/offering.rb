@@ -20,6 +20,7 @@
 #
 
 class Offering < ActiveRecord::Base
+  has_many :room_reservations
   belongs_to :course
   has_and_belongs_to_many :professors
 

@@ -23,7 +23,7 @@ class CourseMech < GdeMech
   #
   # @return [Array<Offering>] an Offering list.
   def offerings
-    (0...professors.size).map do |index|
+    @offerings ||= (0...professors.size).map do |index|
       o = Offering.where(
         code: offering_codes[index],
         term: term,
@@ -147,6 +147,27 @@ class CourseMech < GdeMech
         professors.last << professor
       end
       professors
+    end
+  end
+
+  def room_reservations
+    (0...offering_codes.size).map do |index|
+      raw_room_reservations[index].map do |raw_res|
+        RoomReservationParser.new(raw_res, offerings[index]).room_reservations
+      end
+    end
+  end
+
+  def raw_room_reservations
+    @raw_room_reservations ||= page.search("//b[.='Horário:']/../table//tr").map do |node|
+      clean_str(node.text)
+    end.compact.reduce([]) do |schedules, schedule|
+      if schedule.start_with?('Dia')
+        schedules << []
+      else
+        schedules.last << schedule
+      end
+      schedules
     end
   end
 end
