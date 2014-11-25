@@ -151,10 +151,14 @@ class CourseMech < GdeMech
   end
 
   def room_reservations
-    (0...offering_codes.size).map do |index|
-      raw_room_reservations[index].map do |raw_res|
-        RoomReservationParser.new(raw_res, offerings[index]).room_reservations
+    if raw_room_reservations.any?
+      (0...offering_codes.size).map do |index|
+        raw_room_reservations[index].map do |raw_res|
+          RoomReservationParser.new(raw_res, offerings[index]).room_reservations
+        end
       end
+    else # Some course offerings does not need a room, like intership courses (ex: CP705)
+      offerings
     end
   end
 

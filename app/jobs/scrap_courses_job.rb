@@ -8,7 +8,7 @@ class ScrapCoursesJob < ActiveJob::Base
       faculty_mech = FacultyMech.new(term, faculty)
       faculty_mech.courses.each do |course|
         course_mech = CourseMech.new(term, course)
-        course_mech.offerings
+        course_mech.room_reservations
       end
     end
   end
