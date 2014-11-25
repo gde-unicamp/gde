@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: 'home#index'
   end
+  get 'cursos' => 'dashboard#courses', as: 'courses'
 end

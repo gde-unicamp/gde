@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Nome</td>
+      <td>Ementa</td>
+      <td>Oferecimentos</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.title %></td>
+        <td><%= course.overview %></td>
+        <td><%= course.offerings.pluck(:code) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
