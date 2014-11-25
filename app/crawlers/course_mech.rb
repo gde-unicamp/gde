@@ -24,17 +24,15 @@ class CourseMech < GdeMech
   # @return [Array<Offering>] an Offering list.
   def offerings
     @offerings ||= (0...professors.size).map do |index|
-      o = Offering.where(
+      Offering.where(
         code: offering_codes[index],
-        term: term,
+        term: Offering.terms[term],
         year: year,
         course: course,
         credits: credits,
         min_enrolled_students: min_students_required[index] || 0,
         max_enrolled_students: vacancies[index],
-      ).first_or_create
-      o.professors = professors[index]
-      o
+      ).first_or_create.tap { |o| o.professors = professors[index] }
     end
   end
 
