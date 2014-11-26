@@ -1,0 +1,32 @@
+<ul class="list-group">
+  <li class="list-group-item">Nome: <%= @course.title %></li>
+  <li class="list-group-item">Ementa: <%= @course.overview %></li>
+  <li class="list-group-item">Insituto: <%= @course.faculty.name %></li>
+</ul>
+<br>
+<h3>Oferecimentos:</h3>
+<ul class="list-group">
+  <% @course.offerings.each do |offering| %>
+    <li class="list-group-item">
+      <table class="table">
+        <tr>
+          <td>Turma: <%= offering.code %></td>
+          <td>Ano: <%= offering.year %></td>
+          <td>Creditos: <%= offering.credits %></td>
+          <td>Vagas: <%= offering.max_enrolled_students %></td>
+          <td>Professores: <%= offering.professors.pluck(:name).join(', ') %></td>
+        </tr>
+      </table>
+      <table class="table">
+        <% offering.room_reservations.each do |room_reservation| %>
+          <tr>
+            <td>Dia <%= room_reservation.day_of_week %></td>
+            <td>Sala <%= room_reservation.classroom.name %></td>
+            <td>De <%= room_reservation.start_time.strftime '%H:%M' %></td>
+            <td>Ate <%= room_reservation.end_time.strftime '%H:%M' %></td>
+          </tr>
+        <% end %>
+      </table>
+    </li>
+  <% end %>
+</ul>

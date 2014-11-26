@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Nome</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr class="danger">
+        <td><%= link_to course.title, course %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
