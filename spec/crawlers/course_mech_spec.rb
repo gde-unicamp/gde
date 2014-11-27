@@ -6,7 +6,7 @@ describe CourseMech do
 
     let(:mc404) { Course.find_by(code: 'MC404') || Course.create!(code: 'MC404') }
 
-    subject { CourseMech.new(:second_semester, mc404) }
+    subject { CourseMech.new(Offering.terms[:second_semester], mc404) }
 
     # Expected values
     let(:year) { 2014 }
@@ -18,7 +18,7 @@ describe CourseMech do
     let(:vacancies) { [25, 25, 30, 25, 25] }
     let(:offering_codes) { ['A', 'B', 'C', 'E', 'F'] }
     let(:professor_names) { [['Diego De Freitas Aranha'], ['Diego De Freitas Aranha'], ['Célio Cardoso Guimarães'], ['Edson Borin'], ['Edson Borin']] }
-  
+
     it '#dac_url_period_param' do
       subject.dac_url_period_param.must_equal dac_url_period_param
     end
@@ -92,7 +92,7 @@ describe CourseMech do
 
     let(:ea722) { Course.find_by(code: 'EA722') || Course.create!(code: 'EA722') }
 
-    subject { CourseMech.new(:second_semester, ea722) }
+    subject { CourseMech.new(Offering.terms[:second_semester], ea722) }
 
     # Expected values
     let(:min_students_required) { [7, 7] }
@@ -106,7 +106,7 @@ describe CourseMech do
 
     let(:f_012) { Course.find_by(code: 'F 012') || Course.create!(code: 'F 012') }
 
-    subject { CourseMech.new(:first_semester, f_012) }
+    subject { CourseMech.new(Offering.terms[:first_semester], f_012) }
 
     # Expected values
     let(:professor_names) { [['Adriano Roberto De Lima', 'Monica Alonso Cotta']] }
