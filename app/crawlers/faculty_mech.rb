@@ -17,17 +17,6 @@ class FacultyMech < GdeMech
     "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{faculty.acronym}.htm"
   end
 
-  def dac_url_period_param
-    case term
-    when :first_semester
-      'G1S0'
-    when :second_semester
-      'G2S0'
-    when :summer_vacations
-      'G5A0'
-    end
-  end
-
   def courses
     @courses ||= course_codes.reduce([]) do |courses, course_code|
       course = Course.find_by(code: course_code) || Course.create!(code: course_code)

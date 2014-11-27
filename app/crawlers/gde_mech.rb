@@ -31,4 +31,18 @@ class GdeMech < Mechanize
   def clean_str(string)
     string.mb_chars.tidy_bytes.gsub(/(\s{2,}|\u00a0)/, ' ').strip.to_s
   end
+
+  # Converts a term int from Offring term enum to DAC's code for the term.
+  #
+  # @return [String] DAC's code for the analyzed term.
+  def dac_url_period_param
+    case term
+    when Offering.terms[:first_semester]
+      'G1S0'
+    when Offering.terms[:second_semester]
+      'G2S0'
+    when Offering.terms[:summer_vacations]
+      'G5A0'
+    end
+  end
 end

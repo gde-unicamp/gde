@@ -19,7 +19,7 @@ module Gde
     config.active_record.default_timezone = :local
 
     # Use SuckerPunch for background jobs
-    config.active_job.queue_adapter = :sucker_punch
+    # config.active_job.queue_adapter = :sucker_punch
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

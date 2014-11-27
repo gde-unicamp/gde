@@ -26,7 +26,7 @@ class CourseMech < GdeMech
     @offerings ||= (0...professors.size).map do |index|
       Offering.where(
         code: offering_codes[index],
-        term: Offering.terms[term],
+        term: term,
         year: year,
         course: course,
         credits: credits,
@@ -55,20 +55,6 @@ class CourseMech < GdeMech
   # @return [String] the course offering url in DAC's website.
   def dac_page
     "http://www.dac.unicamp.br/sistemas/horarios/grad/#{dac_url_period_param}/#{course.code.tr(' ', '_')}.htm"
-  end
-
-  # Converts a term symbol from Offring term enum to DAC's code for the term.
-  #
-  # @return [String] DAC's code for the analyzed term.
-  def dac_url_period_param
-    case term
-    when :first_semester
-      'G1S0'
-    when :second_semester
-      'G2S0'
-    when :summer_vacations
-      'G5A0'
-    end
   end
 
   # Discover the course full name in the html
