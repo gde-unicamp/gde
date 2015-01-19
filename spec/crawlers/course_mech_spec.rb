@@ -109,7 +109,7 @@ describe CourseMech do
     subject { CourseMech.new(Offering.terms[:first_semester], f_012) }
 
     # Expected values
-    let(:professor_names) { [['Adriano Roberto De Lima', 'Monica Alonso Cotta']] }
+    let(:professor_names) { [['Adriano Roberto de Lima']] }
 
     it '#professor_names' do
       subject.professor_names.must_equal professor_names
