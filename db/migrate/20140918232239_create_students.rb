@@ -5,7 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :name
       t.boolean :egress
       t.references :undergraduate_program, index: true
-      t.string :track
+      t.references :track, index: true
       t.string :language_choice
       t.references :postgraduate_program, index: true
 

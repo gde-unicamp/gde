@@ -3,7 +3,7 @@ class CreateEnrollments < ActiveRecord::Migration
     create_table :enrollments do |t|
       t.integer :status
       t.references :student, index: true
-      t.references :course, index: true
+      t.references :offering, index: true
 
       t.timestamps
     end
