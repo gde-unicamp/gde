@@ -9,13 +9,14 @@
 #  name                     :string
 #  postgraduate_program_id  :integer
 #  ra                       :integer
-#  track                    :string
+#  track_id                 :integer
 #  undergraduate_program_id :integer
 #  updated_at               :datetime
 #
 # Indexes
 #
 #  index_students_on_postgraduate_program_id   (postgraduate_program_id)
+#  index_students_on_track_id                  (track_id)
 #  index_students_on_undergraduate_program_id  (undergraduate_program_id)
 #
 
