@@ -1,70 +1,94 @@
-section.container-fluid {
-  
-}
+$white: #FFFFFF;
+$mine-shaft: #2A2A2A;
+$curious-blue: #1398D0;
+$silver-chalice: #A5A5A5;
+$outer-space: #2D333A;
+
+$background-color-header-left: $mine-shaft;
+$background-color-header-center: $curious-blue;
+
+$background-color-header-nav-user: lighten($curious-blue, 4%);
+$text-color-header-nav-user: $white;
+
+$background-color-header-right: darken($mine-shaft, 1%);
 
 header {
-  $header-left-bg: #262626;
   .header-left {
-    background-color: $header-left-bg;
+    background-color: $background-color-header-left;
+    padding-top: 4px;
+    padding-bottom: 4px;
     text-align: center;
-
-    .header-logo {
-      cursor: pointer;
-    }
   }
 
-  $header-center-bg: #139DD4;
   .header-center {
-    background-color: $header-center-bg;
+    background-color: $background-color-header-center;
 
-    $user-info-bg: #2FACD8;
-    $user-info-color: #FFF;
-    .user-nav {
-      background-color: $user-info-bg;
+    .nav-user {
+      background-color: $background-color-header-nav-user;
       float: left;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      padding-left: 30px;
-      padding-right: 15px;
+      padding-top: 18px;
+      padding-bottom: 19px;
+      padding-left: 50px;
+      padding-right: 25px;
 
-      .user-info {
+      .nav-user-info {
         float: left;
-        .user-name, .user-notifications {
+        padding-top: 2px;
+        padding-left: 10px;
+
+        .nav-user-name, .nav-user-notifications {
           clear: both;
-          color: $user-info-color;
+          color: $text-color-header-nav-user;
           float: left;
-          padding-left: 10px;
         }
 
-        .user-name {
-          font-size: 1.2em;
+        .nav-user-name {
+          font-size: 1.1em;
         }
 
-        .user-notifications {
-          font-size: 0.9em;
+$background-color-left-sidebar-menu-item-active: lighten($mine-shaft, 3.5%);
+$border-color-left-sidebar-menu-item-active: $curious-blue;
+
+        .nav-user-notifications {
+          font-size: 0.7em;
         }
       }
 
-      .user-nav-icon {
-        color: $user-info-color;
+      .nav-user-icon {
+        color: $text-color-header-nav-user;
         float: left;
-        margin-top: 17px;
+        margin-top: 10px;
         margin-left: 20px;
-        font-size: 1.3em;
+        font-size: 1.2em;
       }
     }
   }
 }
 
-aside#sidebar {
-  background: #212121;
+$background-color-left-sidebar-menu-title: darken($mine-shaft, 1%);
+$text-color-left-sidebar-menu-title: $white;
 
-  ul.sidebar-menu {
+$background-color-left-sidebar-menu-item: $mine-shaft;
+$border-color-left-sidebar-menu-item: $mine-shaft;
+$text-color-left-sidebar-menu-item: $silver-chalice;
+
+$background-color-left-sidebar-menu-item-active: lighten($mine-shaft, 3.5%);
+$border-color-left-sidebar-menu-item-active: $curious-blue;
+$text-color-left-sidebar-menu-item-active: $white;
+  
+$background-color-left-sidebar-menu-item-hover: lighten($mine-shaft, 1%);
+$border-color-left-sidebar-menu-item-hover: $silver-chalice;
+$text-color-left-sidebar-menu-item-hover: $white; 
+
+$border-color-left-sidebar-menu-item-separator: lighten($mine-shaft, 2%);
+
+aside#left_sidebar {
+  ul.left-sidebar-menu {
     list-style-type: none;
     padding: 0;
 
     li {
-      border-right: 3px solid #262626;
+      border-right: 3px solid $background-color-left-sidebar-menu-item;
       display: inline-block;
       width: 100%;
 
@@ -73,16 +97,16 @@ aside#sidebar {
       }
 
       a {
-        background-color: #262626;
-        border-bottom: 1px solid #2A2A2A;
-        color: #C7C7C7;
+        background-color: $background-color-left-sidebar-menu-item;
+        border-bottom: 1px solid $border-color-left-sidebar-menu-item-separator;
+        color: $text-color-left-sidebar-menu-item;
         display: block;
-        font-size: 1.2em;
+        font-size: 1em;
         padding: 12px 20px;
         text-decoration: none;
 
         [class^="li_"]:before, [class*=" li_"]:before {
-          font-size: 1.2em;
+          font-size: 1.4em;
           padding-right: 5px;
           vertical-align: top;
         }
@@ -94,24 +118,32 @@ aside#sidebar {
       }
 
       &.active {
-        background-color: #474747;
-        border-right: 3px solid #129DD4;
+        border-color: $border-color-left-sidebar-menu-item-active;
+        
+        a {
+          background-color: $background-color-left-sidebar-menu-item-active;
+          color: $text-color-left-sidebar-menu-item-active;
+        }
 
         [class^="li_"]:before, [class*=" li_"]:before {
-          color: #129DD4;
+          color: $border-color-left-sidebar-menu-item-active;
         }
       }
 
       &:hover {
-        background-color: #2A2A2A;
-        color: #FFF;
+        border-color: $border-color-left-sidebar-menu-item-hover;
+        
+        a {
+          background-color: $background-color-left-sidebar-menu-item-hover;
+          color: $text-color-left-sidebar-menu-item-hover;
+        }
       }
 
       &.title {
-        background-color: #212121;
-        border-right: 3px solid #212121;
-        color: #FFF;
-        font-size: 1.5em;
+        background-color: $background-color-left-sidebar-menu-title;
+        border-color: $background-color-left-sidebar-menu-title;
+        color: $text-color-left-sidebar-menu-title;
+        font-size: 1.4em;
         padding: 12px 24px;
       }
     }
@@ -123,9 +155,41 @@ main#main-content {
   background-color: $main-content-bg;
 }
 
-$right-sidebar-bg: #262626;
-aside#right-sidebar {
+$background-color-right-sidebar-menu-item: $outer-space;
+$text-color-right-sidebar-menu-item: lighten($outer-space, 25%);
 
+$border-color-right-sidebar-menu-item-separator: lighten($mine-shaft, 2%);
+
+aside#right_sidebar {
+  ul.right-sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    
+    li {
+      display: inline-block;
+      width: 100%;
+      
+      a {
+        background-color: $background-color-right-sidebar-menu-item;
+        border-bottom: 1px solid $border-color-right-sidebar-menu-item-separator;
+        color: $text-color-right-sidebar-menu-item;
+        float: left;
+        display: block;
+        line-height: 43px;
+        font-size: 1em;
+        overflow: hidden;
+        padding: 5px 20px;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 }
 
 .no-padding {

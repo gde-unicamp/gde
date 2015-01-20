@@ -11,29 +11,29 @@
       <!-- Header -->
       <header class="header row">
         <div class="header-left col-lg-2 col-sm-3">
-          <%= image_tag "home_logo.png", class: "header-logo",
-            width: '72', height: '72' %>
+          <%= link_to image_tag("home_logo.png", width: '72', height: '72'), root_path %>
         </div>
 
         <div class="header-center col-lg-8 col-sm-9 no-padding">
-          <div class="user-nav">
-            <%= image_tag 'http://placehold.it/52x52', class: 'pull-left' %>
-            <div class="user-info">
-              <span class="user-name"><%= "Pota Beranizo" %></span>
-              <span class="user-notifications"><%= "Você tem x notificações" %></span>
+          <div class="nav-user">
+            <%= image_tag 'http://placehold.it/43x43', class: 'pull-left' %>
+            <div class="nav-user-info">
+              <span class="nav-user-name"><%= "Pota Beranizo" %></span>
+              <span class="nav-user-notifications"><%= "Você tem x notificações" %></span>
             </div>
-            <i class="user-nav-icon fa fa-caret-down"></i>
+            <i class="nav-user-icon fa fa-caret-down"></i>
           </div>
         </div>
 
         <div class="header-right col-lg-2 visible-lg">
+          <>
         </div>
       </header>
 
       <section class="row">
         <!-- Sidebar -->
-        <aside id="sidebar" class="col-lg-2 col-sm-3 no-padding" role="navigation">
-          <%= render 'layouts/sidebar' %>
+        <aside id="left_sidebar" class="col-lg-2 col-sm-3 no-padding" role="navigation">
+          <%= render 'layouts/left_sidebar' %>
         </aside>
 
         <!-- Main Content -->
@@ -42,8 +42,8 @@
         </main>
 
         <!-- Right sidebar -->
-        <aside id="right-sidebar" class="col-lg-2 visible-lg">
-          <h1>right</h1>
+        <aside id="right_sidebar" class="col-lg-2 visible-lg no-padding">
+          <%= render 'layouts/right_sidebar' %>
         </aside>
       </section>
     </section>
