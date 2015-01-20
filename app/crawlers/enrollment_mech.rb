@@ -12,8 +12,31 @@ class EnrollmentMech < GdeMech
     get(enrollment_page)
   end
 
+  # Não existem alunos matriculados nesta disciplina/turma
+
+  def enrollments
+    @enrollments ||= (0...ras.size).map do |i|
+      Enrollment.where(
+        offering: @offering,
+        student: students[i]
+      ).first_or_create
+    end
+  end
+
+  def students
+    @students ||= (0...ras.size).map do |i|
+      undergrad_program = UndergraduateProgram.find_or_create_by(number: grad_numbers[i])
+      Student.where(
+        ra: ras[i],
+        name: names[i],
+        track: Track.find_or_create_by(code: tracks[i], undergraduate_program: undergrad_program),
+        undergraduate_program: undergrad_program
+      ).first_or_create
+    end
+  end
+
   def enrollment_page
-    "http://www.daconline.unicamp.br/altmatr/conspub_matriculadospordisciplinaturma.do?org.apache.struts.taglib.html.TOKEN=#{token}&txtDisciplina=#{course_code}&txtTurma=#{@offering.code}&cboSubG=#{term}&cboSubP=#{0}&cboAno=#{@offering.year}&btnAcao=Continuar"
+    "http://www.daconline.unicamp.br/altmatr/conspub_matriculadospordisciplinaturma.do?org.apache.struts.taglib.html.TOKEN=#{token}&txtDisciplina=#{course_code}&txtTurma=#{@offering.code}&cboSubG=#{term}&cboSubP=#{0}&cboAno=#{2014}&btnAcao=Continuar"
   end
 
   def term
@@ -45,9 +68,9 @@ class EnrollmentMech < GdeMech
     end
   end
 
-  def grad_codes
+  def grad_numbers
     @grad_codes ||= page.search("//td[@width='270'][@class='corpo'][@bgcolor='white']/../td[4]").map do |node|
-      clean_str(node.text)
+      node.text[/\d+/].to_i
     end
   end
 
