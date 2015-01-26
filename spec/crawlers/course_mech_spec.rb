@@ -10,7 +10,7 @@ describe CourseMech do
 
     # Expected values
     let(:year) { 2014 }
-    let(:title) { 'MC404 Organização Básica de Computadores e Linguagem de Montagem' }
+    let(:course_title) { 'MC404 Organização Básica de Computadores e Linguagem de Montagem' }
     let(:credits) { 4 }
     let(:dac_page) { 'http://www.dac.unicamp.br/sistemas/horarios/grad/G2S0/MC404.htm' }
     let(:overview) { 'Introdução à organização de computadores e representação de informação na memória. Estudo do conjunto de instruções de processadores RISCs e CISCs. Desenvolvimento, implementação e testes de programas usando linguagens e montagem.' }
@@ -28,7 +28,7 @@ describe CourseMech do
     end
 
     it '#title' do
-      subject.title.must_equal title
+      subject.title.must_equal course_title
     end
 
     it '#credits' do

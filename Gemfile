@@ -40,4 +40,6 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter', require: false
+  gem 'capybara', require: false
+  gem 'poltergeist', require: false
 end
