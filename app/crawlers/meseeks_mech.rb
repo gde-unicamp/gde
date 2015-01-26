@@ -20,6 +20,7 @@ class MeseeksMech
             if mech.page.search("//span[contains(.,'Não existem alunos matriculados nesta disciplina/turma')]").empty? && mech.page.search("//span[contains(.,'Disciplina/turma não oferecida para nível, período e ano informados')]").empty?
               offering.save!
               mech.enrollments
+              mech.load_professors
             end
           end
         end

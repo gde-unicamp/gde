@@ -24,6 +24,7 @@ class Offering < ActiveRecord::Base
   belongs_to :course
   has_and_belongs_to_many :professors
   has_many :enrollments
+  has_many :students, through: :enrollments
 
   enum term: [ :first_semester, :second_semester, :summer_vacations ]
 end

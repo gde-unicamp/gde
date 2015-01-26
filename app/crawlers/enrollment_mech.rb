@@ -12,6 +12,22 @@ class EnrollmentMech < GdeMech
     get(enrollment_page)
   end
 
+  def load_professors
+    @offering.professors = professors
+  end
+
+  def professors
+    @professors ||= professor_names.map do |name|
+      p = Professor.find_by(name: name) || Professor.create!(name: name)
+      p.update!(faculty: @offering.course.faculty)
+      p
+    end
+  end
+
+  def professor_names
+    [clean_str(page.search("//span[@class='itemtabela'][.='Docente:']/../text()").text)]
+  end
+
   def enrollments
     @enrollments ||= (0...ras.size).map do |i|
       Enrollment.where(
