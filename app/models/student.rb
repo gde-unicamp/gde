@@ -28,5 +28,5 @@ class Student < ActiveRecord::Base
   belongs_to :language_choice
 
   has_many :enrollments
-  has_many :courses, through: :enrollments
+  has_many :offerings, through: :enrollments
 end

@@ -12,8 +12,6 @@ class EnrollmentMech < GdeMech
     get(enrollment_page)
   end
 
-  # Não existem alunos matriculados nesta disciplina/turma
-
   def enrollments
     @enrollments ||= (0...ras.size).map do |i|
       Enrollment.where(
@@ -36,7 +34,7 @@ class EnrollmentMech < GdeMech
   end
 
   def enrollment_page
-    "http://www.daconline.unicamp.br/altmatr/conspub_matriculadospordisciplinaturma.do?org.apache.struts.taglib.html.TOKEN=#{token}&txtDisciplina=#{course_code}&txtTurma=#{@offering.code}&cboSubG=#{term}&cboSubP=#{0}&cboAno=#{2014}&btnAcao=Continuar"
+    "http://www.daconline.unicamp.br/altmatr/conspub_matriculadospordisciplinaturma.do?org.apache.struts.taglib.html.TOKEN=#{token}&txtDisciplina=#{course_code}&txtTurma=#{@offering.code}&cboSubG=#{term}&cboSubP=#{0}&cboAno=#{@offering.year}&btnAcao=Continuar"
   end
 
   def term
