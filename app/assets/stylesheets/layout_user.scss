@@ -3,6 +3,8 @@ $mine-shaft: #2A2A2A;
 $curious-blue: #1398D0;
 $silver-chalice: #A5A5A5;
 $outer-space: #2D333A;
+$screaming-green: #6DFA48;
+$pomegranate: #F42A15;
 
 $background-color-header-left: $mine-shaft;
 $background-color-header-center: $curious-blue;
@@ -11,6 +13,8 @@ $background-color-header-nav-user: lighten($curious-blue, 4%);
 $text-color-header-nav-user: $white;
 
 $background-color-header-right: darken($mine-shaft, 1%);
+$background-color-header-friend-search: $outer-space;
+$text-color-header-friend-search: $white;
 
 header {
   .header-left {
@@ -60,6 +64,28 @@ $border-color-left-sidebar-menu-item-active: $curious-blue;
         margin-top: 10px;
         margin-left: 20px;
         font-size: 1.2em;
+      }
+    }
+  }
+  
+  .header-right {
+    .input-group {
+      background-color: transparent;
+      margin-left: -15px;
+      margin-right: -15px;
+      padding-top: 23px;
+      padding-bottom: 23px;
+      padding-left: 10px;
+      padding-right: 10px;
+      
+      input, span {
+        background-color: $background-color-header-friend-search;
+        border: 0 none;
+        color: $text-color-header-friend-search;
+      }
+        
+      input:focus {
+        outline: 0 !important;
       }
     }
   }
@@ -158,7 +184,11 @@ main#main-content {
 $background-color-right-sidebar-menu-item: $outer-space;
 $text-color-right-sidebar-menu-item: lighten($outer-space, 25%);
 
-$border-color-right-sidebar-menu-item-separator: lighten($mine-shaft, 2%);
+$background-color-right-sidebar-menu-item-hover: lighten($outer-space, 5%);
+
+$text-color-online: $screaming-green;
+$text-color-offline: lighten($outer-space, 25%);
+$text-color-busy: $pomegranate;
 
 aside#right_sidebar {
   ul.right-sidebar-menu {
@@ -167,11 +197,11 @@ aside#right_sidebar {
     
     li {
       display: inline-block;
+      float: left;
       width: 100%;
       
       a {
         background-color: $background-color-right-sidebar-menu-item;
-        border-bottom: 1px solid $border-color-right-sidebar-menu-item-separator;
         color: $text-color-right-sidebar-menu-item;
         float: left;
         display: block;
@@ -186,6 +216,27 @@ aside#right_sidebar {
         
         img {
           margin-right: 10px;
+        }
+        
+        &:hover {
+          background-color: $background-color-right-sidebar-menu-item-hover;
+        }
+        
+        .status {
+          float: right;
+          font-size: 1.6em;
+          
+          &.online {
+            color: $text-color-online;
+          }
+          
+          &.offline {
+            color: $text-color-offline;
+          }
+          
+          &.busy {
+            color: $text-color-busy;
+          }
         }
       }
     }
@@ -202,6 +253,10 @@ aside#right_sidebar {
   -ms-transition: height 0;
   -o-transition: height 0;
   transition: height 0;
+}
+
+.no-border-radius {
+  border-radius: 0;
 }
 
 #user-header {
