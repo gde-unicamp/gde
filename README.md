@@ -7,3 +7,5 @@
 # GDE
 
 **Isso não é o GDE que está online! Só um projeto mal sucedido de refazê-lo em Ruby on Rails. *
+
+** Para o GDE "de verdade", acesse: https://github.com/guaycuru/gde *
